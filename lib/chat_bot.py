@@ -19,16 +19,16 @@ class SimpleChatBot:
     :ivar system_message: システムメッセージ(str)
     """
 
-    def __init__(self, chat=ChatOpenAI(temperature=0.7), system_message=""):
+    def __init__(self, temperature=0.7, system_message=""):
         """
         コンストラクタです。
 
-        :param chat: チャットのインスタンス, defaults to ChatOpenAI(temperature=0)
-        :type chat: ChatOpenAI, optional
+        :param temperature: 温度, defaults to 0.7
+        :type temperature: float, optional
         :param system_message: システムメッセージ, defaults to ""
         :type system_message: str, optional
         """
-        self.chat = chat
+        self.chat = chat=ChatOpenAI(temperature=temperature)
         self.system_message = SystemMessage(content=system_message)
 
     def talk(self, human_message):
@@ -41,4 +41,4 @@ class SimpleChatBot:
         :return: チャットボットが返すメッセージ
         :rtype: str
         """
-        return self.chat([self.system_message, HumanMessage(content=human_message)])
+        return self.chat([self.system_message, HumanMessage(content=human_message)]).content
