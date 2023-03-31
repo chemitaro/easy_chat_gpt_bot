@@ -10,11 +10,11 @@ if __name__ == '__main__':
     chat_bot = MemoryChatBot(system_message="優しくしてね")
 
     while True:
-        print("")
-        user_input = input("あなた: ")
+        print("\nuser: ")
+        user_input = sys.stdin.read()
         print("")
 
-        if user_input.lower() in ["終了", "exit"]:
+        if user_input.lower() in ["終了\n", "exit\n"]:
             break
 
         sys.stdout.write(colored("Accessing...", "blue"))
@@ -27,5 +27,6 @@ if __name__ == '__main__':
         sys.stdout.write("\r")  # テキストの先頭に戻る
         sys.stdout.flush()
 
-        print(colored(f"AI: {ai_message}", "blue"))
+        print(colored("\nassistant:", "blue"))
+        print(colored(f"{ai_message}", "blue"))
         text_to_voicevox_async(ai_message, speaker=47)
