@@ -7,7 +7,7 @@ from text_to_speech import text_to_siri_async, text_to_voicevox_async
 
 # チャットの実行
 if __name__ == '__main__':
-    chat_bot = MemoryChatBot(system_message="優しくしてね")
+    chat_bot = MemoryChatBot(system_message="")
 
     while True:
         print("\nuser: ")
